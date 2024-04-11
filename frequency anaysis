@@ -1,0 +1,26 @@
+
+file = "Xpo B Int 6 sfe nblly foc 6 unsqkf nbllp. Ypv N mfy 8 kg ofssy boc 7 qxpshg vfssy. Kqlq qvlly flfkq 6-qlefd dkd. Ld pm vzpdnkg Iq vof, rkc rfkfgpy f nbll esbi Xpo B. Bqkcqxlqf, rkc rfkfgpy fnbll esbi Xpo N. Pyppaqf RInxeaa rfkfgpfe n sxpshg vfsi. YInq mt pkc qsvnbnkmmaz sint tke iqk xaii yfy vok"
+
+
+def calculate_relative_frequency(text):
+    alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    freq = {letter: 0 for letter in alphabet}  
+    total = 0
+
+
+    for char in text:
+        if char.upper() in alphabet:
+            freq[char.upper()] += 1
+            total += 1
+
+   
+    rel_freq = {letter: (freq[letter] / total) * 100 for letter in alphabet}
+    return rel_freq
+
+
+rel_freq = calculate_relative_frequency(file)
+
+
+print("Relative Frequency")
+for letter, frequency in rel_freq.items():
+    print(f"{letter} -> {frequency:.2f} %")

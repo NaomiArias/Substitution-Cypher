@@ -1,0 +1,41 @@
+class SubstitutionCipher:
+    def __init__(self, key):
+        self.key = key
+        self.alphabet = "abcdefghijklmnopqrstuvwxyz"
+
+    def encrypt(self, plaintext):
+        ciphertext = ""
+        for char in plaintext:
+            if char.lower() in self.alphabet:
+                index = (self.alphabet.index(char.lower()) + self.key) % 26
+                if char.isupper():
+                    ciphertext += self.alphabet[index].upper()
+                else:
+                    ciphertext += self.alphabet[index]
+            else:
+                ciphertext += char
+        return ciphertext
+
+    def decrypt(self, ciphertext):
+        plaintext = ""
+        for char in ciphertext:
+            if char.lower() in self.alphabet:
+                index = (self.alphabet.index(char.lower()) - self.key) % 26
+                if char.isupper():
+                    plaintext += self.alphabet[index].upper()
+                else:
+                    plaintext += self.alphabet[index]
+            else:
+                plaintext += char
+        return plaintext
+
+
+key = int(input("Enter the key: "))
+cipher = SubstitutionCipher(key)
+
+plaintext = input("Enter the plaintext: ").lower()
+encrypted_message = cipher.encrypt(plaintext)
+print("Encrypted Message:", encrypted_message)
+
+decrypted_message = cipher.decrypt(encrypted_message)
+print("Decrypted Message:", decrypted_message)
